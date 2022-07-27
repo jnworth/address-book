@@ -6,7 +6,10 @@
   <%= form.text_field :ssn, placeholder: "SSN" %>
   <%= form.text_field :dob, placeholder: "Date of Birth" %>
   <%= form.text_field :comment, placeholder: "Comments" %>
-  <%= form.submit %>
+  <%= form.fields_for :emails do |email|%>
+  <%= email.text_field :email_address, placeholder: "email" %>
+  <% end %>
+  <%= form.submit value: "Create Contact"%>
 <% end %>
 
 <!-- <%= form_for @person do |form| %>
