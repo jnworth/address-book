@@ -1,18 +1,49 @@
-<ul>
-  <% @people.each do |person| %>
-    <li><%= link_to person.fname, person_path(person)  %> <%= link_to person.lname, person_path(person)  %>
-    <% @emails.each do |email| %>
-      <%= email.email_address%>
-    <% end %>
-    <% @phones.each do |phone| %>
-      <%= phone.phone_number%>
-    <% end %>
+<form>
+    <div class="input-group">
+        <input type="text" class="form-control form-control-lg" placeholder="Search Here">
+        <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
+    </div>
+</form>
+
+<body>
+  <table class="table table-hover table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @people.each do |person| %>
     <% @addresses.each do |address| %>
-      <%= address.street%>
-      <%= address.town%>
-      <%= address.zip_code%>
-      <%= address.street%>
-    <% end %>
-    </li>
-  <% end %>
-</ul>
+    <% @emails.each do |email| %>
+    <% @phones.each do |phone| %>
+      <tr>
+        <td>
+          <%= link_to person.fname, person_path(person)  %> <%= link_to person.lname, person_path(person)  %>
+        </td>
+
+        <td>
+          <%= address.street%>
+          <%= address.town%>,
+          <%= address.zip_code%>
+        </td>
+        
+        <td>
+          <%= email.email_address%>
+        </td>
+
+        <td>
+          <%= phone.phone_number%>
+        </td>
+      </tr>
+      <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </tbody>
+
+  </table>
+</body>
