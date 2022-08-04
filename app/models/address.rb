@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-    belongs_to :person, optional: true
+    belongs_to :person
 end

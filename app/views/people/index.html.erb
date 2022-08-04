@@ -17,32 +17,35 @@
     </thead>
     <tbody>
     <% @people.each do |person| %>
-    <% @addresses.each do |address| %>
-    <% @emails.each do |email| %>
-    <% @phones.each do |phone| %>
+
       <tr>
         <td>
           <%= link_to person.fname, person_path(person)  %> <%= link_to person.lname, person_path(person)  %>
         </td>
 
         <td>
+          <% person.addresses.each do |address|%>
           <%= address.street%>
-          <%= address.town%>,
-          <%= address.zip_code%>
+          <%= address.town%>
+          <%= address.zip_code%> 
+          <% end %>
         </td>
-        
+       
         <td>
+          <% person.emails.each do |email|%>
           <%= email.email_address%>
+          <% end %>
         </td>
 
         <td>
+          <% person.phones.each do |phone|%>
           <%= phone.phone_number%>
+          <% end %>
         </td>
       </tr>
+
       <% end %>
-      <% end %>
-      <% end %>
-      <% end %>
+
     </tbody>
 
   </table>

@@ -5,14 +5,20 @@
 <h4>SSN: <%= @person.ssn %></h4>
 <h4>Comments: <%= @person.comment %></h4>
 <h2>Address</h2>
-<h4>Street: <%= @address.street %></h4>
-<h4>Town: <%= @address.town %></h4>
-<h4>Zip Code: <%= @address.zip_code %></h4>
-<h4>State: <%= @address.state %></h4>
-<h4>Country: <%= @address.country %></h4>
+<%@person.addresses.each do |address|%>
+<h4>Street: <%= address.street %></h4>
+<h4>Town: <%= address.town %></h4>
+<h4>Zip Code: <%= address.zip_code %></h4>
+<h4>State: <%= address.state %></h4>
+<h4>Country: <%= address.country %></h4>
+<%end%>
 <h2>Email</h2>
-<h4>Email: <%= @email.email_address%></h4>
-<h4>Comments: <%= @email.comment %></h4>
+<%@person.emails.each do |email|%>
+<h4>Email: <%= email.email_address%></h4>
+<h4>Comments: <%= email.comment %></h4>
+<%end%>
+<%@person.phones.each do |phone|%>
 <h2>Phone</h2>
-<h4>Phone: <%= @phone.phone_number %></h4>
-<h4>Comments: <%= @person.comment %></h4>
+<h4>Phone: <%= phone.phone_number %></h4>
+<h4>Comments: <%= phone.comment %></h4>
+<%end%>
