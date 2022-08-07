@@ -1,9 +1,10 @@
-<h1><%= @person.fname %></h1>
-<h1><%= @person.mname %></h1>
-<h1><%= @person.lname %></h1>
+
+<%=link_to "Edit", edit_person_path, class: "btn btn-dark bi-text-right"%>
+<h1><%= @person.fname %> <%= @person.mname %> <%= @person.lname %></h1>
 <h4>DOB: <%= @person.dob %></h4>
 <h4>SSN: <%= @person.ssn %></h4>
 <h4>Comments: <%= @person.comment %></h4>
+
 <h2>Address</h2>
 <%@person.addresses.each do |address|%>
 <h4>Street: <%= address.street %></h4>
@@ -12,11 +13,13 @@
 <h4>State: <%= address.state %></h4>
 <h4>Country: <%= address.country %></h4>
 <%end%>
+
 <h2>Email</h2>
 <%@person.emails.each do |email|%>
 <h4>Email: <%= email.email_address%></h4>
 <h4>Comments: <%= email.comment %></h4>
 <%end%>
+
 <%@person.phones.each do |phone|%>
 <h2>Phone</h2>
 <h4>Phone: <%= phone.phone_number %></h4>

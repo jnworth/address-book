@@ -1,13 +1,25 @@
 class PeopleController < ApplicationController
+
   def index
-    @people = Person.all
+    @people = Person.all.order("lname, fname")
     @email = Email.all
     @address = Address.all
     @phone = Phone.all
+
+    respond_to do |format|
+      format.html {render "index"}
+      format.json {render json: @people.to_json(root: true, include: [:addresses,:emails,:phones]) }
+    end
   end
 
   def show
     @person = Person.find(params[:id])
+    # render "show"
+    respond_to do |format|
+      format.html {render "show"}
+      format.json {render json: @person }
+    end
+
   end
 
   def new
@@ -32,7 +44,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.update(person_params)
 
-    redirect_to person_path(@person)
+    redirect_to people_path
   end
 
   private
@@ -41,5 +53,5 @@ class PeopleController < ApplicationController
     params.require(:person).permit(:fname, :mname, :lname, :ssn, :dob, :comment, 
       addresses_attributes: [:id, :street, :town, :zip_code, :country, :state], emails_attributes: [:id, :email_address, :comment], phones_attributes: [:id, :phone_number, :comment])
   end
-  
+
 end
