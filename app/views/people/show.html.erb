@@ -1,6 +1,8 @@
-
-<%=link_to "Edit", edit_person_path, class: "btn btn-dark bi-text-right"%>
-<h1><%= @person.fname %> <%= @person.mname %> <%= @person.lname %></h1>
+<div class = "btn-group", style = "padding:10px;">
+    <%=button_to "Edit", root_url + 'people/' + params[:id] + '/edit', class: "btn btn-dark bi-text-right", style: "margin-right:10px;" %>
+    <%= button_to 'Delete', @person, method: :delete, class: "btn btn-dark bi-x" %>
+</div>
+<h1><%=@person.salutation%> <%= @person.fname %> <%= @person.mname %> <%= @person.lname %></h1>
 <h4>DOB: <%= @person.dob %></h4>
 <h4>SSN: <%= @person.ssn %></h4>
 <h4>Comments: <%= @person.comment %></h4>

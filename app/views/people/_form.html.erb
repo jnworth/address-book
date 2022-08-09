@@ -1,0 +1,67 @@
+
+<div class = "form-group">
+    <div style = "padding:20px;">
+        <h4>Name</h4>
+        <%= form_with model: @person, local: false do |form| %>
+        <%= form.select :salutation, ["Mr.", "Mrs.", "Ms."], {prompt: 'Salutation'}%>
+        <%= form.text_field :fname, placeholder: "First" %>
+        <%= form.text_field :mname, placeholder: "Middle" %>
+        <%= form.text_field :lname, placeholder: "Last" %>
+        <%= form.text_field :ssn, placeholder: "SSN" %>
+        <%= form.text_field :dob, placeholder: "Date of Birth" %>
+        <%= form.text_field :comment, placeholder: "Comments" %>
+    </div>
+
+
+    <div  style="border-bottom:1px solid #777; border-top:1px solid #777; padding:20px;">
+        <div id="addresses">
+            <h4>Address</h4>
+            <%= form.fields_for :addresses do |builder| %>
+            <div> 
+                <%= render "address_fields", :f => builder %>
+            </div>
+           <% end %>
+       </div>
+
+        <div>
+            <%=add_child_button "Add Another" ,:addresses, "#addresses" %>
+            <%= new_fields_template form, :addresses %>
+        </div>
+
+    </div>
+
+    <div  style="border-bottom:1px solid #777; padding:20px;">
+      <%= form.fields_for :emails do |builder| %>
+        <div id="emails">
+            <h4>Email</h4>
+            <%= render "email_fields", :f => builder %>
+        </div>
+      <% end %>
+
+        <div>
+            <%=add_child_button "Add Another" ,:emails, "#emails" %>
+            <%= new_fields_template form, :emails %>
+        </div>
+
+    </div>
+
+    <div  style="border-bottom:1px solid #777; padding:20px;">
+    <%= form.fields_for :phones do |builder| %>
+        <div id="phones">
+            <h4>Phone</h4>
+            <%= render "phone_fields", :f => builder %>
+        </div>
+    <% end %>
+
+        <div>
+            <%=add_child_button "Add Another" ,:phones, "#phones" %>
+            <%= new_fields_template form, :phones %>
+        </div>
+
+    </div>
+
+    
+
+    <%= form.submit value: "Save Contact"%>
+    <% end %>
+</div>

@@ -2,9 +2,7 @@ class PeopleController < ApplicationController
 
   def index
     @people = Person.all.order("lname, fname")
-    @email = Email.all
-    @address = Address.all
-    @phone = Phone.all
+    
 
     respond_to do |format|
       format.html {render "index"}
@@ -41,8 +39,16 @@ class PeopleController < ApplicationController
   end
 
   def update
+#    raise params.inspect
     @person = Person.find(params[:id])
     @person.update(person_params)
+
+    redirect_to people_path
+  end
+
+  def destroy
+    @person = Person.find(params[:id])
+    @person.destroy
 
     redirect_to people_path
   end
@@ -50,7 +56,7 @@ class PeopleController < ApplicationController
   private
 
   def person_params
-    params.require(:person).permit(:fname, :mname, :lname, :ssn, :dob, :comment, 
+    params.require(:person).permit(:salutation, :fname, :mname, :lname, :ssn, :dob, :comment, 
       addresses_attributes: [:id, :street, :town, :zip_code, :country, :state], emails_attributes: [:id, :email_address, :comment], phones_attributes: [:id, :phone_number, :comment])
   end
 

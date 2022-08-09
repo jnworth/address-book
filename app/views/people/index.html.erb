@@ -1,10 +1,12 @@
-<form>
-    <div class="input-group">
-        <input type="text" class="form-control form-control-lg" placeholder="Search Here">
-        <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
-    </div>
-</form>
-
+<div class="navbar">
+  <form>
+      <div class="input-group" style="padding:10px;">
+          <input type="text" class="form-control form-control-lg" placeholder="Search Here">
+          <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
+      </div>
+  </form>
+  <%=link_to "New Contact", root_url + 'people' + '/new', class: "btn btn-lg btn-primary form-check-inline"%>
+</div>
 <body>
   <table class="table table-hover table-dark table-striped">
     <thead>
@@ -28,18 +30,21 @@
           <%= address.street%>
           <%= address.town%>
           <%= address.zip_code%> 
+          <br>
           <% end %>
         </td>
        
         <td>
           <% person.emails.each do |email|%>
           <%= email.email_address%>
+          <br>
           <% end %>
         </td>
 
         <td>
           <% person.phones.each do |phone|%>
           <%= phone.phone_number%>
+          <br>
           <% end %>
         </td>
       </tr>
