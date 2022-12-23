@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-
+  before_action :require_user_logged_in!
   def index
     @people = Person.all.order("lname, fname")
     
@@ -36,6 +36,7 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
+    
   end
 
   def update

@@ -5,7 +5,10 @@
           <button type="submit" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
       </div>
   </form>
+  <div class="form-check-inline">
   <%=link_to "New Contact", root_url + 'people' + '/new', class: "btn btn-lg btn-primary form-check-inline"%>
+  <%=link_to "Account", root_url, class: "btn btn-lg btn-primary form-check-inline" %>
+  </div>
 </div>
 <body>
   <table class="table table-hover table-dark table-striped">
